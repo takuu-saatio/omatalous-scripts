@@ -5,8 +5,8 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 RUN apt-get install -y nodejs
 RUN mkdir /takuu-saatio
 RUN cd /takuu-saatio && \
-  git clone https://github.com/takuu-saatio/omatalous.git && \
-  cd omatalous && \
+  git clone https://github.com/takuu-saatio/omatalous-scripts.git && \
+  cd omatalous-scripts && \
   npm install
 ADD assets/start.sh /
 CMD /start.sh
