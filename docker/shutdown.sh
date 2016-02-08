@@ -1,11 +1,11 @@
 #!/bin/bash
 
-container="$(docker ps -a | grep omatalous-app | awk '{ print $7 }')"
+container="$(docker ps -a | grep omatalous-scripts | awk '{ print $7 }')"
 if [ -z "$container" ]
 then
-  echo "omatalous-app already removed"
+  echo "omatalous-sripts already removed"
   exit
 fi
 
-docker stop omatalous-app
-docker rm omatalous-app
+docker stop omatalous-scripts
+docker rm omatalous-scripts

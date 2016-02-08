@@ -2,23 +2,23 @@
 
 if [ -z "$1" ] && [ -z "$2" ]
 then
-  docker build -t vhalme/omatalous-app .
+  docker build -t vhalme/omatalous-scripts .
   exit
 fi
 
 if [ "$1" == "--no-cache" ]
 then
-  docker build -t vhalme/omatalous-app --no-cache .
+  docker build -t vhalme/omatalous-scripts --no-cache .
   exit
 fi
 
-docker build -t vhalme/omatalous-app:$1 .
+docker build -t vhalme/omatalous-scripts:$1 .
 if [ ! -z "$2" ]
 then
   if [ "$2" == "--no-cache" ]
   then
-    docker build -t vhalme/omatalous-app:$1 --no-cache .
+    docker build -t vhalme/omatalous-scripts:$1 --no-cache .
     exit
   fi
-  docker tag vhalme/omatalous-app:$1 vhalme/omatalous-app:$2 $3 .
+  docker tag vhalme/omatalous-scripts:$1 vhalme/omatalous-scripts:$2 $3 .
 fi

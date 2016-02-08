@@ -19,4 +19,4 @@ docker run -d -p 8080:5000 \
   -e FB_CLIENT_ID=1053035831402707 \
   -e FB_CLIENT_SECRET=e58adca988aee4b0a7dafd24de4d55d8 \
   -e GIT_UPDATE=$2 \
-  --name omatalous-app --link omatalous-pg:pg vhalme/omatalous-app$tag
+  --name omatalous-scripts --link omatalous-pg:pg vhalme/omatalous-scripts$tag
