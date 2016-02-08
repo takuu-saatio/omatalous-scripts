@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "engines": {
+    "node": ">=4.1 <5",
+    "npm": ">=3.1 <4"
+  },
+  "dependencies": {
+    "babel-core": "5.8.34",
+    "log4js": "^0.6.29",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.14.2",
+    "varname": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel": "^5.8.34",
+    "babel-loader": "^5.4.0"
+  },
+  "scripts": {
+    "update": "babel-node src/update"
+  }
+}
