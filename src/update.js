@@ -38,8 +38,9 @@ const now = new Date();
 Transaction.selectAll({ 
   type: "repeating",
   $or: [
-    { repeatValue: now.getDay() },
-    { repeatValue: now.getDate() }
+    { repeats: "D" },
+    { repeatValue: now.getDay(), repeats: "W" },
+    { repeatValue: now.getDate(), repeats: "M" }
   ]
 })
 .then(async (transactions) => {
