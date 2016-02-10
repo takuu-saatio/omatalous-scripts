@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /takuu-saatio/omatalous
+cd /takuu-saatio/omatalous-scripts
 if [ ! -z "$GIT_UPDATE" ]
 then
   git pull
