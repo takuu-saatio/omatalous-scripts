@@ -35,12 +35,14 @@ const [ User, Transaction, Copy ] = [
 ];
 
 const now = new Date();
+const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+const monthDay = now.getDate() === lastDay ? { $gte: lastDay } : lastDay;
 Transaction.selectAll({ 
   type: "repeating",
   $or: [
     { repeats: "D" },
     { repeatValue: now.getDay(), repeats: "W" },
-    { repeatValue: now.getDate(), repeats: "M" }
+    { repeatValue: monthDay, repeats: "M" }
   ]
 })
 .then(async (transactions) => {
