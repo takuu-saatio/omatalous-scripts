@@ -71,6 +71,7 @@ Transaction.selectAll({
         delete copy.repeatValue;
         copy.type = "copy";
         copy.month = getCurrentMonth();
+        copy.createdDate = now;
 
         copy = await Transaction.schema.create(copy);
         console.log("Created copy", copy.uuid); 
