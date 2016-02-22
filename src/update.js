@@ -37,7 +37,7 @@ const [ User, Transaction, Copy ] = [
 const now = process.env.NOW ? new Date(process.env.NOW) : new Date();
 console.log("BASE DATE", now);
 const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-const monthDay = now.getDate() === lastDay ? { $gte: lastDay } : lastDay;
+const monthDay = now.getDate() === lastDay ? { $gte: lastDay } : now.getDate();
 Transaction.selectAll({ 
   type: "repeating",
   $or: [
