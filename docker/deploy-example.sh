@@ -19,4 +19,5 @@ docker run -d -p 8080:5000 \
   -e FB_CLIENT_SECRET=<google_client_secret> \
   -e ADMIN_USER=<admin@user.email> \
   -e GIT_UPDATE=$2 \
+  -e NOW=$3 \
   --name omatalous-scripts --link omatalous-pg:pg vhalme/omatalous-scripts$tag

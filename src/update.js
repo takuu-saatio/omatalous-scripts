@@ -34,7 +34,7 @@ const [ User, Transaction, Copy ] = [
   schemaLoader.loadSchema("Copy")
 ];
 
-const now = new Date();
+const now = process.env.NOW ? new Date(process.env.NOW) : new Date();
 const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 const monthDay = now.getDate() === lastDay ? { $gte: lastDay } : lastDay;
 Transaction.selectAll({ 
