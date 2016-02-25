@@ -75,11 +75,12 @@ Transaction.selectAll({
 
         copy = await Transaction.schema.create(copy);
         console.log("Created copy", copy.uuid); 
-
+        
         const copyRecord = await Copy.schema.create({
           user: tx.user,
           transaction: tx.uuid,
           copy: copy.uuid,
+          amount: tx.amount,
           date: today
         });
 
