@@ -83,7 +83,7 @@ Transaction.selectAll({
           amount: tx.amount,
           date: today
         });
-
+        
         console.log(`Copy record: ${copyRecord.transaction} => ${copyRecord.copy}`);
 
       }
