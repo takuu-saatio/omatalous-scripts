@@ -15,6 +15,25 @@ function format(date) {
     padded(date.getDate()); 
 }
 
+function currentPeriod(baseDate, periodType) {
+ 
+  let periodStart = null;
+
+  if (periodType === "M") {
+    periodStart = new Date(baseDate.getFullYear(), baseDate.getMonth(), 1);  
+  } else if (periodType === "W") {
+    const offset = baseDate.getDay() !== 0 ? baseDate.getDay() - 1 : 6; 
+    periodStart = new Date(baseDate.getFullYear(), 
+                           baseDate.getMonth(), baseDate.getDate() - offset);  
+  } else {
+    periodStart = new Date(baseDate.getFullYear(), 
+                           baseDate.getMonth(), baseDate.getDate());  
+  }
+  
+  return format(periodStart);
+
+}
+
 const dbUser = process.env.DB_USER || "omatalous";
 const dbPassword = process.env.DB_PASSWORD || "omatalous";
 const sequelize = new Sequelize("omatalous", dbUser, dbPassword, {  
@@ -53,11 +72,12 @@ Transaction.selectAll({
 
     try {
 
+      const period = currentPeriod(now, tx.repeats);
       const today = format(now);
-      console.log("Check for copies at", today);
+      console.log("Check for copies at", today, "for", period, "(", tx.repeats, ")");
       const copies = await Copy.selectAll({ 
         transaction: tx.uuid,
-        date: today
+        period: period
       });
       
       console.log("Found copies", copies.length);
@@ -81,7 +101,8 @@ Transaction.selectAll({
           transaction: tx.uuid,
           copy: copy.uuid,
           amount: tx.amount,
-          date: today
+          date: today,
+          period: period
         });
         
         console.log(`Copy record: ${copyRecord.transaction} => ${copyRecord.copy}`);
